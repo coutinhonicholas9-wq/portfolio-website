@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nick Portfolio | Cart</title>
+    <style>
+        body { font-family: Segoe UI; margin:0; background:#f0f0f0; }
+        header { background:#16a085; color:white; padding:20px; text-align:center; }
+        nav a { margin:0 15px; color:white; text-decoration:none; font-weight:bold; }
+        main { max-width:700px; margin:auto; padding:40px; }
+        .item { background:white; padding:15px; margin:10px 0; border-radius:6px; cursor:pointer; }
+        table { width:100%; background:white; border-collapse:collapse; margin-top:20px; }
+        th, td { padding:12px; border-bottom:1px solid #ddd; }
+        th { background:#16a085; color:white; }
+        .pay-btn { margin-top:20px; padding:15px; width:100%; background:#27ae60;
+                   color:white; border:none; font-size:18px; border-radius:6px; cursor:pointer; }
+        footer { background:#16a085; color:white; text-align:center; padding:15px; margin-top:40px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Shopping Cart</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="skills.html">Skills</a>
+        <a href="cart.html">Cart</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<main>
+    <div class="item" onclick="addItem('AI Course', 999)">AI Course – ₹999</div>
+    <div class="item" onclick="addItem('ML Notes', 499)">ML Notes – ₹499</div>
+    <div class="item" onclick="addItem('NLP Tutorial', 799)">NLP Tutorial – ₹799</div>
+
+    <table>
+        <thead>
+            <tr><th>Item</th><th>Price (₹)</th></tr>
+        </thead>
+        <tbody id="cart"></tbody>
+        <tfoot>
+            <tr><th>Total</th><th id="total">0</th></tr>
+        </tfoot>
+    </table>
+
+    <button class="pay-btn" onclick="payNow()">Pay Now</button>
+</main>
+
+<script>
+let total = 0;
+
+function addItem(name, price) {
+    document.getElementById("cart").innerHTML +=
+        `<tr><td>${name}</td><td>${price}</td></tr>`;
+    total += price;
+    document.getElementById("total").innerText = total;
+}
+
+function payNow() {
+    if (total === 0) {
+        alert("Your cart is empty!");
+    } else {
+        alert("Payment Successful! ₹" + total + " paid.");
+        location.reload();
+    }
+}
+</script>
+
+<footer>&copy; 2026 Nick Portfolio</footer>
+
+</body>
+</html>
